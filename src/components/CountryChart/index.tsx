@@ -2,6 +2,8 @@ import { Moment } from "moment";
 import { useEffect, useMemo, useState } from "react";
 import { AxisOptions, Chart } from "react-charts";
 import { ContryCartData, getCountyChartData } from "../../api/countyChart";
+import { useAppSelector } from "../../store/hooks";
+import { getCurrencySymbol } from "../../utils/currency";
 import { useStyles } from "./styles";
 
 interface Props {
@@ -11,6 +13,8 @@ interface Props {
 
 const CountryChart = ({ endDate, startDate }: Props) => {
   const styles = useStyles();
+
+  const currency = useAppSelector((state) => state.currency.value);
 
   const [data, setData] = useState<ContryCartData[]>();
 
@@ -37,9 +41,13 @@ const CountryChart = ({ endDate, startDate }: Props) => {
         position: "bottom",
         getValue: (datum: ContryCartData["data"][0]) => datum.secondary,
         showGrid: false,
+        formatters: {
+          scale: (value: number) => `${value} ${getCurrencySymbol(currency)}`,
+          tooltip: (value: number) => `${value} ${getCurrencySymbol(currency)}`,
+        },
       },
     ],
-    []
+    [currency]
   );
 
   const getSeriesStyle = () => {

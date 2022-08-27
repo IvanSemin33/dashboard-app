@@ -15,4 +15,11 @@ export const useStyles = createUseStyles({
     fontSize: "14px",
     lineHeight: "22px",
   },
+  currency: {
+    width: "73px",
+    "& .ant-select-selector": {
+      border: "0.5px solid #E9E9FF !important",
+      borderRadius: "8px !important",
+    },
+  },
 });

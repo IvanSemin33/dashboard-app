@@ -6,6 +6,7 @@ import { Table } from "antd";
 import { ElementTableData, getElementTableData } from "../../api/elements";
 import Percent from "../Percent";
 import { useAppSelector } from "../../store/hooks";
+import { getCurrencySymbol } from "../../utils/currency";
 
 import { useStyles } from "./styles";
 
@@ -37,7 +38,7 @@ const ElementTable = ({ startDate, endDate }: Props) => {
         dataIndex: "value",
         key: "value",
         render: (_, { value }) => (
-          <>{`${value} ${currency === "eur" ? "€" : "$"}`}</>
+          <>{`${value} ${getCurrencySymbol(currency)}`}</>
         ),
       },
       {
@@ -45,7 +46,7 @@ const ElementTable = ({ startDate, endDate }: Props) => {
         dataIndex: "prevValue",
         key: "prevValue",
         render: (_, { prevValue }) => (
-          <>{`${prevValue} ${currency === "eur" ? "€" : "$"}`}</>
+          <>{`${prevValue} ${getCurrencySymbol(currency)}`}</>
         ),
       },
       {

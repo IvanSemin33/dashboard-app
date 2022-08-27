@@ -12,7 +12,7 @@ export const useStyles = createUseStyles({
     },
   },
   menuItemActive: {
-    color: "#000000",
+    color: "#000000 !important",
     backgroundColor: "#ECECFF !important",
 
     "&:hover": {

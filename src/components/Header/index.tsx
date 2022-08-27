@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <ANTHeader className={styles.header} color="red">
       <div className={styles.title}>Currency</div>
-      <Select value={currency} style={{ width: 73 }} onChange={onChange}>
+      <Select value={currency} className={styles.currency} onChange={onChange}>
         <Option value="usd">USD</Option>
         <Option value="eur">EUR</Option>
       </Select>

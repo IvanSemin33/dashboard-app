@@ -2,7 +2,10 @@ import { isEqual } from "lodash";
 import moment, { Moment } from "moment";
 import { useEffect, useMemo, useState } from "react";
 import { AxisOptions, Chart } from "react-charts";
+
 import { getLinearChartData, LinearChartData } from "../../api/linearChart";
+import { useAppSelector } from "../../store/hooks";
+import { getCurrencySymbol } from "../../utils/currency";
 
 import { useStyles } from "./styles";
 
@@ -13,6 +16,8 @@ interface Props {
 
 const LinearChart = ({ startDate, endDate }: Props) => {
   const styles = useStyles();
+
+  const currency = useAppSelector((state) => state.currency.value);
 
   const [data, setData] = useState<LinearChartData[]>();
 
@@ -57,9 +62,13 @@ const LinearChart = ({ startDate, endDate }: Props) => {
     () => [
       {
         getValue: (datum: any) => datum.secondary,
+        formatters: {
+          scale: (value: number) => `${value} ${getCurrencySymbol(currency)}`,
+          tooltip: (value: number) => `${value} ${getCurrencySymbol(currency)}`,
+        },
       },
     ],
-    []
+    [currency]
   );
 
   return data ? (
