@@ -1,9 +1,9 @@
 import { DatePicker } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { ComponentProps, useState } from "react";
-import CountryChart from "../CountryChart";
-import Elements from "../Elements";
-import LinearChart from "../LinearChart";
+import CountryChart from "../../components/CountryChart";
+import Elements from "../../components/Elements";
+import LinearChart from "../../components/LinearChart";
 
 import { useStyles } from "./styles";
 
@@ -11,14 +11,14 @@ const { RangePicker } = DatePicker;
 
 export type Dates = ComponentProps<typeof RangePicker>["value"];
 
-const PageContent = () => {
+const StatisticsPage = () => {
   const styles = useStyles();
 
   const [dates, setDates] = useState<Dates>();
 
   return (
     <Content className={styles.content}>
-      <div className={styles.title}>Good morning!</div>
+      <div className={styles.title}>Statistics</div>
 
       <RangePicker
         value={dates}
@@ -40,4 +40,4 @@ const PageContent = () => {
   );
 };
 
-export default PageContent;
+export default StatisticsPage;

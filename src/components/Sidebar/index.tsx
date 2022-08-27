@@ -1,29 +1,46 @@
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { DashboardOutlined, TableOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
+import { useNavigate, useLocation } from "react-router-dom";
 import type { MenuProps } from "antd";
+
 import { useStyles } from "./styles";
-import { useMemo, useState } from "react";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const Sidebar = () => {
   const styles = useStyles();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const [activeKey, setActiveKey] = useState("1");
+  const [activeKey, setActiveKey] = useState(location.pathname.split("/")[1]);
+
+  useEffect(() => {
+    setActiveKey(location.pathname.split("/")[1]);
+  }, [location.pathname]);
+
+  const onSelect = useCallback(
+    (key: string) => {
+      navigate(key, { replace: true });
+    },
+    [navigate]
+  );
 
   const items: MenuItem[] = useMemo(
     () => [
       {
-        key: "1",
+        key: "dashboard",
         icon: <DashboardOutlined />,
         label: "Dashboard",
-        className: activeKey === "1" ? styles.menuItemActive : styles.menuItem,
+        className:
+          activeKey === "dashboard" ? styles.menuItemActive : styles.menuItem,
       },
       {
-        key: "2",
+        key: "statistics",
         icon: <TableOutlined />,
         label: "Statistics",
-        className: activeKey === "2" ? styles.menuItemActive : styles.menuItem,
+        className:
+          activeKey === "statistics" ? styles.menuItemActive : styles.menuItem,
       },
     ],
     [activeKey, styles]
@@ -31,11 +48,11 @@ const Sidebar = () => {
 
   return (
     <Menu
-      defaultSelectedKeys={["1"]}
+      activeKey={activeKey}
       mode="inline"
       items={items}
       className={styles.sidebar}
-      onSelect={(item) => setActiveKey(item.key)}
+      onSelect={({ key }) => onSelect(key)}
     />
   );
 };

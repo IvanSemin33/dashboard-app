@@ -1,9 +1,9 @@
 import { Layout } from "antd";
 import Header from "../Header";
 import Logo from "../Logo";
-import PageContent from "../PageContent";
 import Sidebar from "../Sidebar";
 import { useStyles } from "./styles";
+import PageRouter from "../PageRouter";
 
 const { Sider } = Layout;
 
@@ -18,7 +18,7 @@ const App = () => {
       </Sider>
       <Layout className={styles.rightContainer}>
         <Header />
-        <PageContent />
+        <PageRouter />
       </Layout>
     </Layout>
   );
