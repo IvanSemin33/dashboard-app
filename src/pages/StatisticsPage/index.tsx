@@ -1,9 +1,9 @@
 import { DatePicker } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { ComponentProps, useState } from "react";
-import CountryChart from "../../components/CountryChart";
+
 import Elements from "../../components/Elements";
-import LinearChart from "../../components/LinearChart";
+import ElementTable from "../../components/ElementTable";
 
 import { useStyles } from "./styles";
 
@@ -30,10 +30,13 @@ const StatisticsPage = () => {
       {dates && dates[0] && dates[1] && (
         <>
           <div className={styles.firstSection}>
-            <Elements />
-            <CountryChart />
+            <Elements
+              variant="single"
+              startDate={dates[0]}
+              endDate={dates[1]}
+            />
           </div>
-          <LinearChart startDate={dates[0]} endDate={dates[1]} />
+          <ElementTable startDate={dates[0]} endDate={dates[1]} />
         </>
       )}
     </Content>

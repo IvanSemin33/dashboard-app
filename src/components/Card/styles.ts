@@ -43,17 +43,6 @@ export const useStyles = createUseStyles({
     lineHeight: "22px",
     color: "#8C8C8C",
   },
-  percentUp: {
-    color: "#52C41A",
-  },
-  percentDown: {
-    color: "#F5222D",
-  },
-  percentContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "5px",
-  },
   info: {
     position: "absolute",
     top: "25px",

@@ -1,29 +1,41 @@
-import { useMemo } from "react";
+import { Moment } from "moment";
+import { useEffect, useMemo, useState } from "react";
 import { AxisOptions, Chart } from "react-charts";
-import { getCountyChartData } from "../../api/countyChart";
+import { ContryCartData, getCountyChartData } from "../../api/countyChart";
 import { useStyles } from "./styles";
 
-const CountryChart = () => {
+interface Props {
+  startDate: Moment;
+  endDate: Moment;
+}
+
+const CountryChart = ({ endDate, startDate }: Props) => {
   const styles = useStyles();
 
-  const data = getCountyChartData();
+  const [data, setData] = useState<ContryCartData[]>();
 
-  const primaryAxis = useMemo<AxisOptions<typeof data[number]["data"][number]>>(
+  useEffect(() => {
+    setData(getCountyChartData());
+  }, [startDate, endDate]);
+
+  const primaryAxis = useMemo<
+    AxisOptions<ContryCartData[][number]["data"][number]>
+  >(
     () => ({
       position: "left",
-      getValue: (datum) => datum.primary,
+      getValue: (datum: ContryCartData["data"][0]) => datum.primary,
       showGrid: false,
     }),
     []
   );
 
   const secondaryAxes = useMemo<
-    AxisOptions<typeof data[number]["data"][number]>[]
+    AxisOptions<ContryCartData[][number]["data"][number]>[]
   >(
     () => [
       {
         position: "bottom",
-        getValue: (datum) => datum.secondary,
+        getValue: (datum: ContryCartData["data"][0]) => datum.secondary,
         showGrid: false,
       },
     ],
@@ -36,7 +48,7 @@ const CountryChart = () => {
     };
   };
 
-  return (
+  return data ? (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Chart
@@ -54,7 +66,7 @@ const CountryChart = () => {
         />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default CountryChart;

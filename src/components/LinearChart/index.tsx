@@ -1,7 +1,7 @@
 import { isEqual } from "lodash";
 import moment, { Moment } from "moment";
 import { useEffect, useMemo, useState } from "react";
-import { Chart } from "react-charts";
+import { AxisOptions, Chart } from "react-charts";
 import { getLinearChartData, LinearChartData } from "../../api/linearChart";
 
 import { useStyles } from "./styles";
@@ -14,7 +14,7 @@ interface Props {
 const LinearChart = ({ startDate, endDate }: Props) => {
   const styles = useStyles();
 
-  const [data, setData] = useState<LinearChartData>();
+  const [data, setData] = useState<LinearChartData[]>();
 
   const [lines, setLines] = useState<
     {
@@ -32,7 +32,9 @@ const LinearChart = ({ startDate, endDate }: Props) => {
     return difference > 1;
   }, [endDate, startDate]);
 
-  const primaryAxis = useMemo(
+  const primaryAxis = useMemo<
+    AxisOptions<LinearChartData[][number]["data"][number]>
+  >(
     () => ({
       getValue: (datum: any) => datum.primary,
       showGrid: false,
@@ -49,7 +51,9 @@ const LinearChart = ({ startDate, endDate }: Props) => {
     [isDifferenceMoreThanOneDay]
   );
 
-  const secondaryAxes = useMemo(
+  const secondaryAxes = useMemo<
+    AxisOptions<LinearChartData[][number]["data"][number]>[]
+  >(
     () => [
       {
         getValue: (datum: any) => datum.secondary,

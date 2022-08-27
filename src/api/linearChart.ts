@@ -9,12 +9,12 @@ export type LinearChartData = {
     primary: Date;
     secondary: number;
   }[];
-}[];
+};
 
 export const getLinearChartData = (
   startDate: Moment,
   endDate: Moment
-): LinearChartData => {
+): LinearChartData[] => {
   const start = new Date(startDate.toDate());
   const end = new Date(endDate.toDate());
 

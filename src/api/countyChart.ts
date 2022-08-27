@@ -1,8 +1,15 @@
 import { getRandomValue } from "../utils/random";
 
+export type ContryCartData = {
+  label: string;
+  data: {
+    primary: string;
+    secondary: number;
+  }[];
+};
 const countries = ["Russia", "Spain", "USA", "Italy"];
 
-export const getCountyChartData = () => {
+export const getCountyChartData = (): ContryCartData[] => {
   return countries
     .map((country) => ({
       label: country,
