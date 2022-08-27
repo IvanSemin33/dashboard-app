@@ -1,9 +1,9 @@
 import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
-  menu: {
+  sidebar: {
     width: "208px",
-    paddingTop: "30px",
+    marginTop: "30px",
   },
   menuItem: {
     color: "#000000",

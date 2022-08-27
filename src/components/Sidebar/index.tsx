@@ -34,7 +34,7 @@ const Sidebar = () => {
       defaultSelectedKeys={["1"]}
       mode="inline"
       items={items}
-      className={styles.menu}
+      className={styles.sidebar}
       onSelect={(item) => setActiveKey(item.key)}
     />
   );
