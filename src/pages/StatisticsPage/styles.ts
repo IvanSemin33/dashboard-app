@@ -29,4 +29,8 @@ export const useStyles = createUseStyles({
     gap: "20px",
     marginBottom: "20px",
   },
+  animation: {
+    animationName: "animate",
+    animationDuration: "1s",
+  },
 });

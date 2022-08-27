@@ -30,10 +30,16 @@ const DashboardPage = () => {
       {dates && dates[0] && dates[1] && (
         <>
           <div className={styles.firstSection}>
-            <Elements variant="all" startDate={dates[0]} endDate={dates[1]} />
-            <CountryChart startDate={dates[0]} endDate={dates[1]} />
+            <div className={styles.animation}>
+              <Elements variant="all" startDate={dates[0]} endDate={dates[1]} />
+            </div>
+            <div className={styles.animation}>
+              <CountryChart startDate={dates[0]} endDate={dates[1]} />
+            </div>
           </div>
-          <LinearChart startDate={dates[0]} endDate={dates[1]} />
+          <div className={styles.animation}>
+            <LinearChart startDate={dates[0]} endDate={dates[1]} />
+          </div>
         </>
       )}
     </Content>

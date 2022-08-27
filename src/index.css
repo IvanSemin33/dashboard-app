@@ -3,3 +3,12 @@
 body {
   font-family: "Roboto";
 }
+
+@keyframes animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

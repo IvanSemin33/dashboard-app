@@ -30,13 +30,17 @@ const StatisticsPage = () => {
       {dates && dates[0] && dates[1] && (
         <>
           <div className={styles.firstSection}>
-            <Elements
-              variant="single"
-              startDate={dates[0]}
-              endDate={dates[1]}
-            />
+            <div className={styles.animation}>
+              <Elements
+                variant="single"
+                startDate={dates[0]}
+                endDate={dates[1]}
+              />
+            </div>
           </div>
-          <ElementTable startDate={dates[0]} endDate={dates[1]} />
+          <div className={styles.animation}>
+            <ElementTable startDate={dates[0]} endDate={dates[1]} />
+          </div>
         </>
       )}
     </Content>
