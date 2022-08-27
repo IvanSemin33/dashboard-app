@@ -1,5 +1,6 @@
+import { isEqual } from "lodash";
 import moment, { Moment } from "moment";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Chart } from "react-charts";
 import { getLinearChartData, LinearChartData } from "../../api/linearChart";
 
@@ -15,7 +16,7 @@ const LinearChart = ({ startDate, endDate }: Props) => {
 
   const [data, setData] = useState<LinearChartData>();
 
-  const lines = useRef<
+  const [lines, setLines] = useState<
     {
       label: string;
       color: string;
@@ -60,7 +61,7 @@ const LinearChart = ({ startDate, endDate }: Props) => {
   return data ? (
     <div className={styles.container}>
       <div className={styles.title}>
-        {lines.current.map((line) => (
+        {lines.map((line) => (
           <div className={styles.titleItem}>
             <div
               className={styles.line}
@@ -78,10 +79,18 @@ const LinearChart = ({ startDate, endDate }: Props) => {
             secondaryAxes,
             tooltip: false,
             getSeriesStyle: (datum) => {
-              lines.current[datum.index] = {
+              const newLine = {
                 label: datum.label,
                 color: datum.style?.fill || "",
               };
+              if (
+                !lines[datum.index] ||
+                !isEqual(lines[datum.index], newLine)
+              ) {
+                const newLines = [...lines];
+                newLines.splice(datum.index, 1, newLine);
+                setLines(newLines);
+              }
 
               return { ...datum.style };
             },
