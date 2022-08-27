@@ -5,6 +5,7 @@ import { Table } from "antd";
 
 import { ElementTableData, getElementTableData } from "../../api/elements";
 import Percent from "../Percent";
+import { useAppSelector } from "../../store/hooks";
 
 import { useStyles } from "./styles";
 
@@ -15,6 +16,8 @@ interface Props {
 
 const ElementTable = ({ startDate, endDate }: Props) => {
   const styles = useStyles();
+
+  const currency = useAppSelector((state) => state.currency.value);
 
   const [data, setData] = useState<ElementTableData[]>([]);
 
@@ -33,11 +36,17 @@ const ElementTable = ({ startDate, endDate }: Props) => {
         title: "Value ",
         dataIndex: "value",
         key: "value",
+        render: (_, { value }) => (
+          <>{`${value} ${currency === "eur" ? "€" : "$"}`}</>
+        ),
       },
       {
         title: "Prev value",
         dataIndex: "prevValue",
         key: "prevValue",
+        render: (_, { prevValue }) => (
+          <>{`${prevValue} ${currency === "eur" ? "€" : "$"}`}</>
+        ),
       },
       {
         title: "",
@@ -50,7 +59,7 @@ const ElementTable = ({ startDate, endDate }: Props) => {
         ),
       },
     ],
-    [styles]
+    [styles, currency]
   );
 
   return data.length > 0 ? (
