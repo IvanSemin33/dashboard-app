@@ -1,2 +1,0 @@
-# dashboard-app
-AVASoft Test
