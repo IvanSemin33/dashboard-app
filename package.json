@@ -2,6 +2,14 @@
   "name": "dashboard-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "dashboard-app.ivan-semin.com",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -24,10 +32,9 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@types/lodash": "^4.14.184",
+    "gh-pages": "^5.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -46,9 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.184"
   },
   "engines": {
     "npm": ">=8.11.0",
