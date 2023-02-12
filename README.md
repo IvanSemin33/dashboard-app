@@ -44,10 +44,6 @@ Runs the app in the development mode.
 
 Builds the app for production to the `build` folder.
 
-### `npm run deploy`
-
-Deploy app to Firebase Hosting
-
 ## 📝 Technical task from AVASoft
 
 Develop a two-page interface.
