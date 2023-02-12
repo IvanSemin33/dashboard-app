@@ -2,7 +2,7 @@
   "name": "dashboard-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "dashboard-app.ivan-semin.com",
+  "homepage": "https://dashboard-app.ivan-semin.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
