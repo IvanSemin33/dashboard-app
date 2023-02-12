@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dashboard-app.ivan-semin.com/static/css/main.5ae930f1.css",
-    "main.js": "/dashboard-app.ivan-semin.com/static/js/main.ce1ce6ac.js",
+    "main.js": "/dashboard-app.ivan-semin.com/static/js/main.6cf84f3c.js",
     "static/js/787.92af229c.chunk.js": "/dashboard-app.ivan-semin.com/static/js/787.92af229c.chunk.js",
     "static/media/logo.svg": "/dashboard-app.ivan-semin.com/static/media/logo.1790d40ae684c5d3bcb81d202936a399.svg",
     "index.html": "/dashboard-app.ivan-semin.com/index.html",
@@ -9,11 +9,11 @@
     "static/media/arrow-down.svg": "/dashboard-app.ivan-semin.com/static/media/arrow-down.eb3a1cbc36b0f21674facc544408ea03.svg",
     "static/media/arrow-up.svg": "/dashboard-app.ivan-semin.com/static/media/arrow-up.b193d6eb19816467cc47a2e15f3e174a.svg",
     "main.5ae930f1.css.map": "/dashboard-app.ivan-semin.com/static/css/main.5ae930f1.css.map",
-    "main.ce1ce6ac.js.map": "/dashboard-app.ivan-semin.com/static/js/main.ce1ce6ac.js.map",
+    "main.6cf84f3c.js.map": "/dashboard-app.ivan-semin.com/static/js/main.6cf84f3c.js.map",
     "787.92af229c.chunk.js.map": "/dashboard-app.ivan-semin.com/static/js/787.92af229c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ae930f1.css",
-    "static/js/main.ce1ce6ac.js"
+    "static/js/main.6cf84f3c.js"
   ]
 }
