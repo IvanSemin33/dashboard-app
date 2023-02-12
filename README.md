@@ -4,7 +4,7 @@ AVASoft Test Dashboard App
 
 ## 🖥 Demo
 
-[dashboard-app.ivan-semin.com](<https://dashboard-app.ivan-semin.com>)
+[dashboard-app.ivan-semin.com](<dashboard-app.ivan-semin.com>)
 
 ## 📦 Instalation
 
